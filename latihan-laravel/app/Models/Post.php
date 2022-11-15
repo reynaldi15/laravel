@@ -30,20 +30,20 @@ class Post {
     ];
 
     public static function all(){
-        return self::$blog_post;
+        return collect(self::$blog_post);
     }
 
     public static function find($slug){
-        $posts = self::$blog_post;
+        $posts = static::all();
 
-        $post =[];
-    foreach($posts as $p){
-        if($p["slug"]=== $slug){
-            $post = $p;
+    //     $post =[];
+    // foreach($posts as $p){
+    //     if($p["slug"]=== $slug){
+    //         $post = $p;
 
-        }
-    }
-    return $post; 
+    //     }
+    // }
+    return $posts->firstwhere('slug',$slug); 
     }
 
 }
